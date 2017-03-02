@@ -21,7 +21,6 @@ exports.getT = getT;
  * Returns the specified parameter value
  */
 function get(parameter, def) {
-    initConfig();
     var ret = {};
     var v1 = utils.get(p, parameter, def);
     var v2 = utils.get(appConf, parameter, def);
@@ -66,30 +65,28 @@ function getInt(parameter, def) {
 
 /**
  * @name initConfig
- * @param {string}       file configuration file
- * @param {string|Array} path JSON path
+ * @param {string}          file configuration file
+ * @param {string|Array=}   path JSON path
  * @description
  * Initializes configuration
  * file
  */
 function initConfig(file, path) {
-    if (appConf === null) {
-        appConf = {};
+    appConf = {};
 
-        var conf = require(file);
-        p = utils.get(conf, path, {});
+    var conf = require(file);
+    p = utils.get(conf, path, {});
 
-        var m;
-        process.argv.forEach(function (val) {
-            if (m = val.match(/^--([^-]+)-([^=]+)=?(.*)$/)) {
-                utils.set(appConf, [m[1], m[2]], m[3] || true);
-            }
-        });
-        for (var key in process.env) {
-            if (process.env.hasOwnProperty(key)) {
-                if (m = key.match(/^([^-]+)-(.+)$/)) {
-                    utils.set(appConf, [m[1], m[2]], process.env[key] || true);
-                }
+    var m;
+    process.argv.forEach(function (val) {
+        if (m = val.match(/^--([^-]+)-([^=]+)=?(.*)$/)) {
+            utils.set(appConf, [m[1], m[2]], m[3] || true);
+        }
+    });
+    for (var key in process.env) {
+        if (process.env.hasOwnProperty(key)) {
+            if (m = key.match(/^([^-]+)-(.+)$/)) {
+                utils.set(appConf, [m[1], m[2]], process.env[key] || true);
             }
         }
     }
