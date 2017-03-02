@@ -1,5 +1,7 @@
 'use strict';
 
-exports.utils = require('./utils');
-exports.config = require('./config');
-exports.cookies = require('./cookies');
+exports = module.exports = {
+    utils: require('./utils'),
+    config: require('./config'),
+    cookies: require('./cookies')
+};
