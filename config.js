@@ -3,7 +3,7 @@
 var extend = require('extend');
 
 var utils = require('./utils');
-var p = null;
+var fileConf = null;
 var appConf = null;
 
 exports.init = initConfig;
@@ -22,7 +22,7 @@ exports.getT = getT;
  */
 function get(parameter, def) {
     var ret = {};
-    var v1 = utils.get(p, parameter, def);
+    var v1 = utils.get(fileConf, parameter, def);
     var v2 = utils.get(appConf, parameter, def);
     if (!utils.isset(v2)) {
         return v1;
@@ -65,18 +65,13 @@ function getInt(parameter, def) {
 
 /**
  * @name initConfig
- * @param {string}          file configuration file
- * @param {string|Array=}   path JSON path
+ * @param {object=} conf initial configuration
  * @description
  * Initializes configuration
- * file
  */
-function initConfig(file, path) {
+function initConfig(conf) {
+    fileConf = conf ? conf : {};
     appConf = {};
-
-    var conf = require(file);
-    p = utils.get(conf, path, {});
-
     var m;
     process.argv.forEach(function (val) {
         if (m = val.match(/^--([^-]+)-([^=]+)=?(.*)$/)) {
