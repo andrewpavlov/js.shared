@@ -1,0 +1,11 @@
+{
+  "name": "js.shared",
+  "version": "0.1.0",
+  "description": "JS helper functions",
+  "author": "Andrey Pavlov <andrew.m.pavlov@gmail.com>",
+  "devDependencies": {
+  },
+  "dependencies": {
+    "extend": "^3.0.0"
+  }
+}
