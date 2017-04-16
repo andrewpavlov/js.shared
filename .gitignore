@@ -1,4 +1,5 @@
 node_modules/
 bower_components/
 .idea/
+.tags1
 npm-debug.log
