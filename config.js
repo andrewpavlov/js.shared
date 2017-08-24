@@ -70,18 +70,25 @@ function getInt(parameter, def) {
  * Initializes configuration
  */
 function initConfig(conf) {
-    fileConf = conf ? conf : {};
-    appConf = {};
-    var m;
-    process.argv.forEach(function (val) {
-        if (m = val.match(/^--([^-]+)-([^=]+)=?(.*)$/)) {
-            utils.set(appConf, [m[1], m[2]], m[3] || true);
-        }
-    });
-    for (var key in process.env) {
-        if (process.env.hasOwnProperty(key)) {
-            if (m = key.match(/^([^-]+)-(.+)$/)) {
-                utils.set(appConf, [m[1], m[2]], process.env[key] || true);
+    if (!fileConf) {
+        fileConf = {};
+    }
+    if (conf) {
+        extend(true, fileConf, conf);
+    }
+    if (!appConf) {
+        appConf = {};
+        var m;
+        process.argv.forEach(function (val) {
+            if (m = val.match(/^--([^-]+)-([^=]+)=?(.*)$/)) {
+                utils.set(appConf, [m[1], m[2]], m[3] || true);
+            }
+        });
+        for (var key in process.env) {
+            if (process.env.hasOwnProperty(key)) {
+                if (m = key.match(/^([^-]+)-(.+)$/)) {
+                    utils.set(appConf, [m[1], m[2]], process.env[key] || true);
+                }
             }
         }
     }
