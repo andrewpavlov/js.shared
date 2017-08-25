@@ -17,3 +17,7 @@
         })
     }
 
+*the project does not depend on aws-sdk directly.  
+so, if you use aws functions - install sdk in your project
+
+    npm install --save aws-sdk 
