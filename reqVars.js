@@ -1,6 +1,6 @@
 'use strict';
 
-var utils = require('./utils');
+const utils = require('./utils');
 
 module.exports.get = getVar;
 
@@ -15,7 +15,7 @@ module.exports.get = getVar;
  * This functions returns the specified request parameter
  */
 function getVar(req, name, opts) {
-    var ret = utils.get(req, ['params', name]);
+    let ret = utils.get(req, ['params', name]);
     if (!utils.isset(ret)) {
         // req.method === 'GET'
         ret = utils.get(req, ['query', name]);

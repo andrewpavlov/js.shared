@@ -1,9 +1,15 @@
 {
   "name": "js.shared",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "JS helper functions",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrewpavlov/js.shared.git"
+  },
   "author": "Andrey Pavlov <andrew.m.pavlov@gmail.com>",
   "devDependencies": {
+    "aws-sdk": "^2.102.0"
   },
   "dependencies": {
     "extend": "^3.0.0"

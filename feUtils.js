@@ -1,8 +1,8 @@
 /**
  * @name lsGet
  * @param   {String} key Key
- * @param   {Any=}   def Default value
- * @returns {Any}    Stored data, otherwise def.
+ * @param   {*=}   def Default value
+ * @returns {*}    Stored data, otherwise def.
  * @description
  * Return stored data by key if exists, otherwise - default value
  */
@@ -17,7 +17,7 @@ function lsGet(key, def) {
 /**
  * @name lsSet
  * @param   {String} key  Key
- * @param   {Any}    data Data to store
+ * @param   {*}    data Data to store
  * @description
  * Stores data to local storage by key
  */

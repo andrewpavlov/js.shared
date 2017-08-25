@@ -366,16 +366,16 @@ var utils = {
         var ret = '';
         num = utils.isset(num, -1);
         length = utils.isset(length, -1);
-        if (num != -1) {
+        if (num !== -1) {
             for (var loop = 0; loop < num; loop++) {
                 ret += str;
             }
-        } else if (length != -1) {
+        } else if (length !== -1) {
             while (ret.length < length) {
                 ret += str;
             }
         }
-        if (length != -1) {
+        if (length !== -1) {
             ret = ret.substr(0, length);
         }
         return ret;
@@ -638,7 +638,7 @@ var utils = {
             while ((format.charAt(iFormat) === c) && (iFormat < format.length)) {
                 token += format.charAt(iFormat++);
             }
-            if (value[token] != null) {
+            if (value[token] !== null) {
                 result = result + value[token];
             }
             else {

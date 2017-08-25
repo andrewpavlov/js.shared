@@ -1,10 +1,10 @@
 'use strict';
 
-var extend = require('extend');
+const extend = require('extend');
 
-var utils = require('./utils');
-var fileConf = null;
-var appConf = null;
+const utils = require('./utils');
+let fileConf = null;
+let appConf = null;
 
 exports.init = initConfig;
 exports.get = get;
@@ -21,9 +21,9 @@ exports.getT = getT;
  * Returns the specified parameter value
  */
 function get(parameter, def) {
-    var ret = {};
-    var v1 = utils.get(fileConf, parameter, def);
-    var v2 = utils.get(appConf, parameter);
+    let ret = {};
+    let v1 = utils.get(fileConf, parameter, def);
+    let v2 = utils.get(appConf, parameter);
     if (!utils.isset(v2)) {
         return v1;
     }
@@ -46,7 +46,7 @@ function get(parameter, def) {
  * Returns the specified parameter value
  */
 function getT(parameter, type, def) {
-    var ret = get(parameter, def);
+    let ret = get(parameter, def);
     return utils.mixedTo(ret, type);
 }
 
@@ -78,13 +78,13 @@ function initConfig(conf) {
     }
     if (!appConf) {
         appConf = {};
-        var m;
+        let m;
         process.argv.forEach(function (val) {
             if (m = val.match(/^--([^-]+)-([^=]+)=?(.*)$/)) {
                 utils.set(appConf, [m[1], m[2]], m[3] || true);
             }
         });
-        for (var key in process.env) {
+        for (let key in process.env) {
             if (process.env.hasOwnProperty(key)) {
                 if (m = key.match(/^([^-]+)-(.+)$/)) {
                     utils.set(appConf, [m[1], m[2]], process.env[key] || true);
