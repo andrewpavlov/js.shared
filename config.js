@@ -23,7 +23,7 @@ exports.getT = getT;
 function get(parameter, def) {
     var ret = {};
     var v1 = utils.get(fileConf, parameter, def);
-    var v2 = utils.get(appConf, parameter, def);
+    var v2 = utils.get(appConf, parameter);
     if (!utils.isset(v2)) {
         return v1;
     }
