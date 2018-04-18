@@ -3,13 +3,13 @@ declare class Config {
 
   get(parameter: string | string[], def?: any): string;
 
-  getT(parameter: any, type: string, def: any): any;
+  getT(parameter: any, type: string, def?: any): any;
 
   getInt(parameter: string | any[], def?: any): number;
 }
 
 declare class Utils {
-  get(obj: object, path: string | string[], def: any): any;
+  get(obj: object, path: string | string[], def?: any): any;
 
   set(obj: object, path: string | string[], value: any): object;
 
@@ -84,4 +84,4 @@ export var utils: Utils;
 export var cookies: Cookies;
 export var vars: ReqVars;
 
-export function aws(modules?: string | string[]): object;
+export function aws(modules?: string | string[]): any;
