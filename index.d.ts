@@ -53,6 +53,8 @@ declare class Utils {
 
   arrMove(arr: any[], from: number, to: number): any[];
 
+  arrInsert(arr: any[], what: any, where: number): any[];
+
   arrRemove(arr: any[], idx: number): any[];
 
   dateFormat(dt: Date, format?: string): string;

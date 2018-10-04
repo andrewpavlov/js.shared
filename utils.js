@@ -549,6 +549,27 @@ var utils = {
     },
 
     /**
+     * @name arrInsert
+     * @methodOf Array
+     * @param {Array}   arr     Array
+     * @param {Any}     what    Element
+     * @param {Number}  where   Destination position
+     * @returns {Array}
+     * Self object
+     * @description
+     * Inserts element to array at the specified position
+     */
+    arrInsert: function (arr, what, where) {
+        if (where < 0) {
+            where = 0;
+        } else if (where >= arr.length) {
+            where = arr.length;
+        }
+        arr.splice(where, 0, what);
+        return arr;
+    },
+
+    /**
      * @name arrRemove
      * @methodOf Array
      * @param {Array}   arr     Array
@@ -653,6 +674,13 @@ var utils = {
 if (typeof Array.prototype.move === 'undefined') {
     Array.prototype.move = function (from, to) {
         return utils.arrMove(this, from, to);
+    };
+}
+
+// Array Insert
+if (typeof Array.prototype.insert === 'undefined') {
+    Array.prototype.insert = function (what, where) {
+        return utils.arrInsert(this, what, where);
     };
 }
 
