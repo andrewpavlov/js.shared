@@ -67,7 +67,7 @@ function getConfiguration(confName) {
             val
                 .split(/[\n,;]/)
                 .forEach((_v) => {
-                    let fv = _v.split(/[=]/);
+                    let fv = _v.split(/[=]/, 1);
                     $u.set(conf, fv[0], fv[1]);
                 });
             return conf;
